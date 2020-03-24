@@ -1,0 +1,84 @@
+<div class="card material-table">
+    <div class="table-header">
+        <span class="table-title">New Lead</span>
+    </div>
+    <div *ngFor=" let user of allBookingDetail">
+        <div fxLayout="row">
+            <div fxFlex.gt-sm="100%">
+                <mat-card>
+                    <mat-card-content>
+
+                        <div class="row">
+                            <div id="admin" class="col s12">
+
+
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="bcol">
+                                                <h2>{{user.name}}</h2>
+                                                <p class="date">{{user.date}} <span>
+                                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                                    <span>{{user.time}}</span></p>
+                                                <button mat-raised-button color="warn" class="completed"
+                                                    *ngIf="user.activeStatus==0; else notShow">{{pendingStatus}}</button>
+                                                <ng-template #notShow>
+                                                    <button mat-raised-button class="completed"
+                                                        color="primary">{{CompleteStatus}}
+                                                    </button>
+                                                </ng-template>
+                                            </div>
+                                            <mat-grid-list cols="2" rowHeight="2:1">
+                                                <mat-grid-tile>
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-body">
+                                                            <h3></h3>
+                                                            <p>Mobile Number : {{user.number}}
+                                                            </p>
+                                                            <p>Address : {{user.addresss1}}
+                                                            </p>
+                                                            <p>Landmark : {{user.landmark}}
+                                                            </p>
+                                                            <p>Pincode : {{user.pincode}}
+                                                            </p>
+
+                                                        </div>
+                                                    </div>
+                                                </mat-grid-tile>
+                                                <mat-grid-tile>
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-body">
+                                                            <h3></h3>
+                                                            <p>Window AC : {{user.window_ac_service}}
+                                                            </p>
+                                                            <p>Split AC : {{user.split_ac_service}}
+                                                            </p>
+                                                            <p>Less/No Colling : {{user.less_no_cooling}}
+                                                            </p>
+                                                            <p>AC No Starting : {{user.ac_not_starting}}
+                                                            </p>
+                                                            <p>Noise Issue : {{user.noise_issue}}
+                                                            </p>
+                                                            <p>Water Leakege : {{user.water_leakege}}
+                                                            </p>
+
+                                                        </div>
+                                                    </div>
+                                                </mat-grid-tile>
+                                            </mat-grid-list>
+
+
+                                            <button mat-raised-button color="primary" class="proceed" mat-raised-button
+                                                (click)="openDialog(); getDetail(user.id)">Proceed</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

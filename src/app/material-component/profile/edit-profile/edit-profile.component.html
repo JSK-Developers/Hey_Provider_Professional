@@ -1,0 +1,90 @@
+<link
+    href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css"
+    rel="stylesheet" id="bootstrap-css">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet"
+    id="bootstrap-css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+
+<div class="main">
+
+    <!-- Sign up form -->
+    <section class="signup">
+        <div class="container">
+            <div class="signup-content">
+                <div class="signup-form">
+                    <h2 class="form-title">Sign up</h2>
+                    <div class="form-group">
+                        <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                        <input type="text" name="name" id="name" [(ngModel)]="professionalRegistrationField.userName"
+                            placeholder="Your Name" />
+                    </div>
+                    <div class="form-group">
+                        <label for="email"><i class="zmdi zmdi-email"></i></label>
+                        <input type="email" name="email" id="email" [(ngModel)]="professionalRegistrationField.email"
+                            placeholder="Your Email" />
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneNumber"><i class="zmdi zmdi-phone"></i></label>
+                        <input type="number" name="phoneNumber" id="phoneNumber"
+                            [(ngModel)]="professionalRegistrationField.phoneNumber" placeholder="Your Phone Number" />
+                    </div>
+                    <div class="form-group">
+                        <label for="pancard"><i class="zmdi zmdi-card"></i></label>
+                        <input type="number" name="pancard" id="pancard"
+                            [(ngModel)]="professionalRegistrationField.panNumber" placeholder="Your PAN Number" />
+                    </div>
+                    <div class="form-group">
+                        <label for="adharcard"><i class="zmdi zmdi-card"></i></label>
+                        <input type="number" name="adharcard" id="adharcard"
+                            [(ngModel)]="professionalRegistrationField.adharNumber" placeholder="Your Adhar Number" />
+                    </div>
+                    <div class="form-group">
+                        <label for="bankAccountNumber"><i class="fa fa-bank"></i></label>
+                        <input type="number" name="bankAccountNumber" id="bankAccountNumber"
+                            [(ngModel)]="professionalRegistrationField.bankAccountNumber"
+                            placeholder="Your Bank Account Number" />
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmBankAccountNumber"><i class="fa fa-bank"></i></label>
+                        <input type="number" name="confirmBankAccountNumber" id="confirmBankAccountNumber"
+                            [(ngModel)]="professionalRegistrationField.confirmBankAccountNumber"
+                            placeholder="Repeat Your Bank Account Number" />
+                    </div>
+                    <div class="form-group">
+                        <label for="IFSCCode"><i class="fa fa-bank"></i></label>
+                        <input type="text" name="IFSCCode" id="IFSCCode"
+                            [(ngModel)]="professionalRegistrationField.ifscCode" placeholder="Your IFSC Code" />
+                    </div>
+                    <div class="form-group">
+                        <label for="pass"><i class="zmdi zmdi-lock-outline"></i></label>
+                        <input type="password" name="pass" id="pass"
+                            [(ngModel)]="professionalRegistrationField.password" placeholder="Your password" />
+                    </div>
+                    <div class="form-group">
+                        <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
+                        <input type="password" name="re_pass" id="re_pass"
+                            [(ngModel)]="professionalRegistrationField.confirmPassword"
+                            placeholder="Repeat your password" />
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+                        <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all
+                            statements in </label>
+                    </div>
+                    <div class="form-group form-button">
+                        <input type="submit" name="signup" id="signup" class="form-submit" (click)="saveUser()"
+                            value="Register" />
+                    </div>
+                </div>
+                <div class="signup-image">
+                    <figure><img src="assets/images/background/signup-image.jpg" alt="sing up image"></figure>
+                    <a routerLink="/login" class="signup-image-link">I am already member</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</div>

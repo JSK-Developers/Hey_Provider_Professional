@@ -1,0 +1,21 @@
+<!-- ============================================================== -->
+<!-- Profile - style you can find in header.scss -->
+<!-- ============================================================== -->
+<button mat-button color="Basic" (click)="navigateLogin('Item1')"
+    *ngIf="!this.loginService.isUserLoggedIn()">Login</button>&nbsp;
+<button mat-button color="Basic" (click)="navigateLogOut('Item1')"
+    *ngIf="this.loginService.isUserLoggedIn()">Logout</button>&nbsp;
+<button [matMenuTriggerFor]="profile" mat-icon-button class="m-r-5" *ngIf="this.loginService.isUserLoggedIn()"> <img
+        src="assets/images/users/1.jpg" alt="user" class="profile-pic"> </button>
+<mat-menu #profile="matMenu" class="mymegamenu">
+    <button mat-menu-item>
+        <mat-icon>settings</mat-icon> Settings
+    </button>
+    <button mat-menu-item (click)="navigateMenu('Item1')">
+        <mat-icon>account_box</mat-icon> Profile
+
+    </button>
+    <button mat-menu-item>
+        <mat-icon>notifications_off</mat-icon> Disable notifications
+    </button>
+</mat-menu>
