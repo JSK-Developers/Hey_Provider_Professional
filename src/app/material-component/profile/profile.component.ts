@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
   id: number = null;
-  username: any;
+  userName: any;
 
 
   constructor(
@@ -20,26 +20,26 @@ export class ProfileComponent implements OnInit {
     private httpClient: HttpClient,
     private router: Router
   ) {
-    this.username = httpService.username;
-    console.log(this.username);
+    this.userName = httpService.userName;
+    console.log(this.userName);
   }
 
-  loginUserId(username) {
-    this.professionalService.getRegistrationListByName(username).subscribe(
-      data => {
-        this.id = data[0].id;
-        console.log(this.id);
-        console.log(data[0]);
-        this.refreshUser();
-      }
-    )
-  }
+  // loginUserId(userName) {
+  //   this.professionalService.getRegistrationListByName(userName).subscribe(
+  //     data => {
+  //       this.id = data[0].id;
+  //       console.log(this.id);
+  //       console.log(data[0]);
+  //       this.refreshUser();
+  //     }
+  //   )
+  // }
   ngOnInit() {
-    this.loginUserId(this.username);
+    // this.loginUserId(this.userName);
+    this.getUserId();
   }
 
   userOrderDetail;
-  userName: string;
   email: string;
   phoneNumber: string;
   panNumber: string;
@@ -52,9 +52,16 @@ export class ProfileComponent implements OnInit {
     console.log(`update ${id}`)
     this.router.navigate(['/editProfile', id])
   }
-
-  refreshUser() {
-    this.professionalService.professionalDetailById(this.id).subscribe(
+  getUserId() {
+    this.httpService.getUserId().subscribe(
+      data => {
+        console.log(data);
+        this.refreshUser(data);
+      }
+    )
+  }
+  refreshUser(id) {
+    this.professionalService.professionalDetailById(id).subscribe(
       response => {
         this.userOrderDetail = response;
         this.userName = response.userName;

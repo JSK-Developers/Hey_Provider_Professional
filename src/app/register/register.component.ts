@@ -27,10 +27,8 @@ export class RegisterComponent implements OnInit {
       panNumber: '',
       adharNumber: '',
       bankAccountNumber: '',
-      confirmBankAccountNumber: '',
       ifscCode: '',
       password: '',
-      confirmPassword: '',
       activeStatus: 0
     }
   }
@@ -38,20 +36,20 @@ export class RegisterComponent implements OnInit {
     return this.professionalRegistrationForm.controls;
   }
   ngOnInit() {
-    this.professionalRegistrationForm = this.formBuilder.group({
-      id: [''],
-      userName: ['', Validators.required],
-      email: ['', Validators.required],
-      phoneNumber: ['', Validators.required],
-      panNumber: ['', Validators.required],
-      adharNumber: ['', Validators.required],
-      bankAccountNumber: ['', Validators.required],
-      confirmBankAccountNumber: ['', Validators.required],
-      ifscCode: ['', Validators.required],
-      password: ['', Validators.required],
-      confirmPassword: ['', Validators.required],
-      activeStatus: [0, Validators.required],
-    })
+    // this.professionalRegistrationForm = this.formBuilder.group({
+    //   id: [''],
+    //   userName: ['', Validators.required],
+    //   email: ['', Validators.required],
+    //   phoneNumber: ['', Validators.required],
+    //   panNumber: ['', Validators.required],
+    //   adharNumber: ['', Validators.required],
+    //   bankAccountNumber: ['', Validators.required],
+    //   confirmBankAccountNumber: ['', Validators.required],
+    //   ifscCode: ['', Validators.required],
+    //   password: ['', Validators.required],
+    //   confirmPassword: ['', Validators.required],
+    //   activeStatus: [0, Validators.required],
+    // })
   }
 
 
@@ -63,10 +61,8 @@ export class RegisterComponent implements OnInit {
     panNumber: new FormControl('', [Validators.required]),
     adharNumber: new FormControl('', [Validators.required]),
     bankAccountNumber: new FormControl('', [Validators.required]),
-    confirmBankAccountNumber: new FormControl('', [Validators.required]),
     ifscCode: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
-    confirmPassword: new FormControl('', [Validators.required]),
   });
   PostData(professionalRegistrationForm) {
     this.professionalRegistrationField = new ProfessionalRegistrationField();
@@ -76,10 +72,8 @@ export class RegisterComponent implements OnInit {
     this.professionalRegistrationField.panNumber = this.panNumber.value;
     this.professionalRegistrationField.adharNumber = this.adharNumber.value;
     this.professionalRegistrationField.bankAccountNumber = this.bankAccountNumber.value;
-    this.professionalRegistrationField.confirmBankAccountNumber = this.confirmBankAccountNumber.value;
     this.professionalRegistrationField.ifscCode = this.ifscCode.value;
     this.professionalRegistrationField.password = this.password.value;
-    this.professionalRegistrationField.confirmPassword = this.confirmPassword.value;
     this.submitted = true;
     this.save();
   }
@@ -117,17 +111,11 @@ export class RegisterComponent implements OnInit {
   get bankAccountNumber() {
     return this.professionalRegistrationForm.get('bankAccountNumber');
   }
-  get confirmBankAccountNumber() {
-    return this.professionalRegistrationForm.get('confirmBankAccountNumber');
-  }
   get ifscCode() {
     return this.professionalRegistrationForm.get('ifscCode');
   }
   get password() {
     return this.professionalRegistrationForm.get('password');
-  }
-  get confirmPassword() {
-    return this.professionalRegistrationForm.get('confirmPassword');
   }
 
   // PostData(_profesionalRegistrationForm: NgForm) {

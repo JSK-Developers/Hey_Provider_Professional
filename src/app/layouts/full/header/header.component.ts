@@ -8,9 +8,9 @@ import { HttpService } from '../../../service/http.service';
   styleUrls: []
 })
 export class AppHeaderComponent {
-
+  checkToken = false;
   constructor(private router: Router,
-    public loginService: HttpService) {
+    public loginService: HttpService, ) {
 
   }
   navigateLogin(tag) {
@@ -29,4 +29,21 @@ export class AppHeaderComponent {
       this.router.navigate(['profile']);
     }
   }
+
+
+  // token = sessionStorage.getItem('TOKEN');
+  // validateToken(token) {
+  //   this.loginService.checkTokenValidate(token);
+  // }
+  ngOnInit() {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    // this.validateToken(this.token);
+    // if (this.validateToken) {
+    //   this.checkToken = false;
+    // } else {
+    //   this.checkToken = true;
+    // }
+  }
+
 }

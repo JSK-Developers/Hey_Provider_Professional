@@ -10,24 +10,21 @@ export class BookingServiceService {
   constructor(private httpclient: HttpClient) { }
   public id;
   getAllUser() {
-    let httpHeaders = new HttpHeaders().set('content-type', 'application/json');
-    let options = {
-      headers: httpHeaders
-    };
-    return this.httpclient.get<BookServicesByUserField[]>('http://localhost:8080/api/AllPendingServiceData', options);
+    const headers = new HttpHeaders({ Authorization: `${sessionStorage.getItem('TOKEN')}` });
+
+    return this.httpclient.get<BookServicesByUserField[]>('http://localhost:8080/api/AllPendingServiceData', { headers });
   }
   getAllCompletedLead(id: any) {
-    let httpHeaders = new HttpHeaders().set('content-type', 'application/json');
-    let options = {
-      headers: httpHeaders
-    };
-    return this.httpclient.get<BookServicesByUserField[]>(`http://localhost:8080/api/AllCompletedData/${id}`, options);
+    const headers = new HttpHeaders({ Authorization: `${sessionStorage.getItem('TOKEN')}` });
+    return this.httpclient.get<BookServicesByUserField[]>(`http://localhost:8080/api/AllCompletedData/${id}`, { headers });
   }
   getServiceDetailById(id: any) {
-    return this.httpclient.get<BookServicesByUserField>(`http://localhost:8080/api/serviceDetail/${id}`);
+    const headers = new HttpHeaders({ Authorization: `${sessionStorage.getItem('TOKEN')}` });
+    return this.httpclient.get<BookServicesByUserField>(`http://localhost:8080/api/serviceDetail/${id}`, { headers });
   }
 
   updateActiveStatus(id: any, BookServicesByUserField: any) {
-    return this.httpclient.put(`http://localhost:8080/api/setActiveStatus//${id}`, BookServicesByUserField);
+    const headers = new HttpHeaders({ Authorization: `${sessionStorage.getItem('TOKEN')}` });
+    return this.httpclient.put(`http://localhost:8080/api/setActiveStatus/${id}`, BookServicesByUserField, { headers });
   }
 }

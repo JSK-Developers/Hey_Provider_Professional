@@ -1,9 +1,9 @@
 <!-- ============================================================== -->
 <!-- Profile - style you can find in header.scss -->
 <!-- ============================================================== -->
-<button mat-button color="Basic" (click)="navigateLogin('Item1')"
+<button mat-button color="" class="text-white" (click)="navigateLogin('Item1')"
     *ngIf="!this.loginService.isUserLoggedIn()">Login</button>&nbsp;
-<button mat-button color="Basic" (click)="navigateLogOut('Item1')"
+<button mat-button color="" class="text-white" (click)="navigateLogOut('Item1')"
     *ngIf="this.loginService.isUserLoggedIn()">Logout</button>&nbsp;
 <button [matMenuTriggerFor]="profile" mat-icon-button class="m-r-5" *ngIf="this.loginService.isUserLoggedIn()"> <img
         src="assets/images/users/1.jpg" alt="user" class="profile-pic"> </button>
@@ -19,3 +19,7 @@
         <mat-icon>notifications_off</mat-icon> Disable notifications
     </button>
 </mat-menu>
+
+<div class="alert alert-warning" *ngIf="checkToken" role="alert">
+    Session Expired Please Login Again
+</div>

@@ -6,9 +6,7 @@ export class ProfessionalRegistrationField {
     panNumber: string;
     adharNumber: string;
     bankAccountNumber: string;
-    confirmBankAccountNumber: string;
     ifscCode: string;
     password: string;
-    confirmPassword: string;
     activeStatus: number;
 }

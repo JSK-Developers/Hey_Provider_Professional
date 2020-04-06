@@ -8,6 +8,7 @@ import { ProfessionalRegistrationField } from '../register/professionalField';
 })
 export class ProfessionalService {
   serviceUrl = 'http://localhost:8080/apiProvider/';
+  baseUrl = 'http://localhost:8080/';
   constructor(private http: HttpClient) { }
   public username;
   sid: any;
@@ -16,26 +17,26 @@ export class ProfessionalService {
     let options = {
       headers: httpHeaders
     };
-    return this.http.post(this.serviceUrl + 'provider', professionalRegistrationFiled, options)
+    return this.http.post(this.baseUrl + 'register', professionalRegistrationFiled, options)
   }
 
   public getRegistrationListByName(name: String): Observable<any> {
-    let httpHeaders = new HttpHeaders().set('content-type', 'application/json');
-    let options = {
-      headers: httpHeaders
-    };
-    return this.http.get(`${this.serviceUrl}` + 'provider/' + `${name}`, options);
+    const headers = new HttpHeaders({ Authorization: `${sessionStorage.getItem('TOKEN')}` });
+    return this.http.get(`${this.serviceUrl}` + 'provider/' + `${name}`, { headers });
   }
 
   public professionalDetailById(id: any) {
-    return this.http.get<ProfessionalRegistrationField>(`${this.serviceUrl}` + 'singleProvider/' + `${id}`);
+    const headers = new HttpHeaders({ Authorization: `${sessionStorage.getItem('TOKEN')}` });
+    return this.http.get<ProfessionalRegistrationField>(`${this.serviceUrl}` + 'singleProvider/' + `${id}`, { headers });
   }
 
   public saveImage(uploadImageData: FormData): Observable<any> {
-    return this.http.post(this.serviceUrl + 'saveUserProfile', uploadImageData);
+    const headers = new HttpHeaders({ Authorization: `${sessionStorage.getItem('TOKEN')}` });
+    return this.http.post(this.serviceUrl + 'saveUserProfile', uploadImageData, { headers });
   }
 
   updateUser(id: any, professionalRegistrationFiled: any) {
-    return this.http.put(`${this.serviceUrl}` + 'provider/' + `${id}`, professionalRegistrationFiled);
+    const headers = new HttpHeaders({ Authorization: `${sessionStorage.getItem('TOKEN')}` });
+    return this.http.put(`${this.serviceUrl}` + 'provider/' + `${id}`, professionalRegistrationFiled, { headers });
   }
 }

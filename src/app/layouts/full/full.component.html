@@ -5,7 +5,7 @@
     <!-- ============================================================== -->
     <!-- Topbar - style you can find in header.scss -->
     <!-- ============================================================== -->
-    <mat-toolbar color="primary" class="topbar telative">
+    <mat-toolbar class="topbar telative">
         <!-- ============================================================== -->
         <!-- Logo - style you can find in header.scss -->
         <!-- ============================================================== -->
@@ -16,22 +16,22 @@
                     <!-- Dark Logo icon -->
                     <img src="assets/images/logo-icon.png" alt="homepage" class="dark-logo">
                     <!-- Light Logo icon -->
-                    <img src="assets/images/logo-light-icon.png" alt="homepage" class="light-logo">
+                    <!-- <img src="assets/images/logo-light-icon.png" alt="homepage" class="light-logo"> -->
                 </b>
                 <!--End Logo icon -->
                 <!-- Logo text -->
                 <span fxShow="false" fxShow.gt-xs>
                     <!-- dark Logo text -->
-                    <img src="assets/images/logo-text.png" alt="homepage" class="dark-logo">
+                    <!-- <img src="assets/images/logo-text.png" alt="homepage" class="dark-logo"> -->
                     <!-- Light Logo text -->
-                    <img src="assets/images/logo-light-text.png" class="light-logo" alt="homepage">
+                    <h1 class="text-white">HEY Provider</h1>
                 </span> </a>
         </div>
         <!-- ============================================================== -->
         <!-- sidebar toggle -->
         <!-- ============================================================== -->
 
-        <button mat-icon-button (click)="snav.toggle()" value="sidebarclosed">
+        <button mat-icon-button (click)="snav.toggle()" class="text-white" value="sidebarclosed">
             <mat-icon>menu</mat-icon>
         </button>
         <span fxFlex></span>
