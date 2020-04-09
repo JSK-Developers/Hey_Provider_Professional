@@ -32,16 +32,25 @@ export class LoginComponent implements OnInit {
   }
 
 
-  checkLogin(): void {
-    this.httpService.authenticate(this.userName, this.password).subscribe(
-      data => {
 
-        this.router.navigate(['dashboard']);
-        this.invalidLogin = false;
+   check: any;
+  checkError: any = false;
+  checkLogin() {
+    this.providerRegistrationServices.authenticate(this.userName, this.password).subscribe(
+      data => {
+        console.log(data);
+        this.check = data;
+        if (this.check == true) {
+          localStorage.setItem('UserName', this.userName);
+          sessionStorage.setItem('AUTHENTICATED_USER', this.userName);
+          this.router.navigate(['dashboard']);
+        } else {
+          this.checkError = true;
+        }
+
       },
       error => {
         console.log(error)
-        this.invalidLogin = true;
       }
     );
   }

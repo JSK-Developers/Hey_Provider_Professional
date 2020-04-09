@@ -9,10 +9,10 @@ export class BookingServiceService {
   ServicesUrl = 'http://localhost:8080/api/';
   constructor(private httpclient: HttpClient) { }
   public id;
-  getAllUser() {
+  getAllPendingData(id:any) {
     const headers = new HttpHeaders({ Authorization: `${sessionStorage.getItem('TOKEN')}` });
 
-    return this.httpclient.get<BookServicesByUserField[]>('http://localhost:8080/api/AllPendingServiceData', { headers });
+    return this.httpclient.get<BookServicesByUserField[]>(`http://localhost:8080/api/AllPendingServiceData/${id}`, { headers });
   }
   getAllCompletedLead(id: any) {
     const headers = new HttpHeaders({ Authorization: `${sessionStorage.getItem('TOKEN')}` });

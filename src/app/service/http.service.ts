@@ -24,6 +24,7 @@ export class HttpService {
   ) { }
   public userName;
   serviceUrl = 'http://localhost:8080/apiProviderRegisterAndLogin/';
+  baseUrl='http://localhost:8080/apiProvider/';
   isUserLoggedIn() {
     let user = localStorage.getItem('UserName');
     return !(user === null);
@@ -39,24 +40,24 @@ export class HttpService {
   }
 
 
-
+    
   User: any;
-  authenticate(username, password) {
-    return this.httpclient.post<any>(
-      `${this.apiUrl}/authenticate`, {
-      username,
-      password
-    }
-    ).pipe(
-      map(
-        data => {
-          localStorage.setItem('UserName', username);
-          sessionStorage.setItem('AUTHENTICATED_USER', username);
-          sessionStorage.setItem('TOKEN', `Bearer ${data.token}`);
-        }
-      )
-    )
-  }
+  // authenticate(username, password) {
+  //   return this.httpclient.post<any>(
+  //     `${this.apiUrl}/authenticate`, {
+  //     username,
+  //     password
+  //   }
+  //   ).pipe(
+  //     map(
+  //       data => {
+  //         localStorage.setItem('UserName', username);
+  //         sessionStorage.setItem('AUTHENTICATED_USER', username);
+  //         sessionStorage.setItem('TOKEN', `Bearer ${data.token}`);
+  //       }
+  //     )
+  //   )
+  // }
 
   checkTokenValidate(token) {
     const headers = new HttpHeaders({ Authorization: `${sessionStorage.getItem('TOKEN')}` });

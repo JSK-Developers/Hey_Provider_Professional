@@ -17,8 +17,12 @@ export class ProfessionalService {
     let options = {
       headers: httpHeaders
     };
-    return this.http.post(this.baseUrl + 'register', professionalRegistrationFiled, options)
+    return this.http.post(this.serviceUrl + 'provider', professionalRegistrationFiled, options)
   }
+
+  authenticate(userName, password) {
+        return this.http.post<any>(`${this.serviceUrl}`+'authenticate', { userName, password });
+    }
 
   public getRegistrationListByName(name: String): Observable<any> {
     const headers = new HttpHeaders({ Authorization: `${sessionStorage.getItem('TOKEN')}` });

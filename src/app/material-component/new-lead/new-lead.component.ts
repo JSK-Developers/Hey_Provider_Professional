@@ -5,6 +5,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { BookServicesByUserField } from '../bookServicesByUserFiled';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import {HttpService} from '../../service/http.service'
 
 @Component({
   selector: 'app-new-lead',
@@ -14,20 +15,31 @@ import { Router } from '@angular/router';
 export class NewLeadComponent implements OnInit {
   allBookingDetail: any[] = [];
   name: any;
+  id:any;
   constructor(
     private bookingService: BookingServiceService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private httpService:HttpService
   ) { }
   pendingStatus = 'pending';
   CompleteStatus = 'Done';
   ngOnInit() {
-    this.refreshUser();
+    this.getUserId();
   }
-  refreshUser() {
-    this.bookingService.getAllUser().subscribe(
+  refreshUser(id) {
+    
+    this.bookingService.getAllPendingData(id).subscribe(
       response => {
         console.log(response);
         this.allBookingDetail = response
+      }
+    )
+  }
+    getUserId() {
+    this.httpService.getUserId().subscribe(
+      data => {
+        console.log(data);
+        this.refreshUser(data);
       }
     )
   }
